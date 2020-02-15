@@ -1,1 +1,1 @@
-web: gunicorn antonukcrm.wsgi --log-file -
+web: gunicorn crmproject.wsgi --log-file -
