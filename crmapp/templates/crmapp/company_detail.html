@@ -1,0 +1,32 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1>Компания {{ company.name }}</h1>
+
+<p><strong>ФИО руководителя (контактного лица):</strong> {{ company.director }}</p>
+<p><strong>Описание:</strong> {{ company.summary }}</p>
+<p><strong>Дата создания записи:</strong> {{ company.date_create }}</p>
+<p><strong>Дата изменения записи:</strong> {{ company.date_update }}</p>
+<p><strong>Адрес:</strong> {{ company.adress }}</p>
+<p><strong>Email:</strong> {{ company.email }}</p>
+<p><strong>Телефон:</strong> {{ company.phone }}</p>
+<div style="margin-left:20px;margin-top:20px">
+    <h4>Проекты компании:</h4>
+    <ol>
+        {% for project in company.project_set.all %}
+        <li><p><a href="{% url 'project_detail' project.pk %}">{{project.name}}</a></p>
+            <h5>Комментарии о проекте:</h5>
+            <ul>
+                {% for comm in project.message_set.all %}
+                <li><p><a href="{% url 'message_detail' comm.pk %}">{{comm.name}}</a></p></li>
+                {% empty %}
+                <p>Нет комментариев.</p>
+                {% endfor %}
+            </ul>
+            {% empty %}
+            <p>Нет проектов.</p>
+            {% endfor %}
+        </li>
+    </ol>
+</div>
+{% endblock %}

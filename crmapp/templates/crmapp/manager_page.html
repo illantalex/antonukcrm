@@ -1,0 +1,32 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1>Менеджер {{ manager.user.first_name }} {{ manager.user.last_name }}</h1>
+{% load static %}
+<div class="col-xs-2"><img class="img-responsive" src="{{ manager.photo.url }}"></div>
+<p><strong>Имя:</strong> {{ manager.user.first_name }}</p>
+<p><strong>Фамилия:</strong> {{ manager.user.last_name }}</p>
+<p><strong>Email:</strong> {{ manager.user.email }}</p>
+<p><strong>Пользователь:</strong> {{ manager.user.username }}</p>
+{% if manager.user.is_staff %}
+<p><strong>Может добавлять записи.</strong></p>
+{% else %}
+<p><strong>Не может добавлять записи.</strong></p>
+{% endif %}
+{% if manager.pk == user.manager.pk %}
+<a href="{% url 'user_update' manager.user.pk %}">Изменить данные менеджера.</a>
+{% endif %}
+<div style="margin-left:20px;margin-top:20px">
+    <h4>Комментарии:</h4>
+    <ul>
+        {% for copy in manager.message_set.all %}
+        <li><p><h6><a href="{% url 'message_detail' copy.pk %}">{{copy.name}}</a></h6></p>
+            <p><strong>Описание: </strong>{{copy.description}}</p></li>
+        <p><strong>Канал обращения: </strong>{{copy.get_channel_display}}</p>
+        <p><strong>Оценка: </strong>{{copy.get_mark_display}}</p></li>
+        {% empty %}
+        <p>Нет комментариев.</p>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

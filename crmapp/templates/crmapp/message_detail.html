@@ -1,0 +1,11 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1>{{ message.name }}</h1>
+
+<p><strong>Проект:</strong> {{ message.project }}</p>
+<p><strong>Канал обращения:</strong> {{ message.get_channel_display }}</p>
+<p><strong>Менеджер, котрорый совершал взаимодействие:</strong> {{ message.manager }}</p>
+<p><strong>Описание взаимодействия:</strong> {{ message.description }}</p>
+<p><strong>Оценка:</strong> {{ message.get_mark_display }}</p>
+{% endblock %}

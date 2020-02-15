@@ -1,0 +1,20 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1>Список компаний</h1>
+<p>Сортировать по названию компании:<a href="?sort=name">▲</a><a href="?sort=-name">▼</a></p>
+<p>Сортировать по дате создания:<a href="?sort=date_create">▲</a><a href="?sort=-date_create">▼</a></p>
+{% if user.is_staff %}
+<a href="{% url 'company_create' %}">Добавить компанию</a>
+{% endif %}
+<ul>
+    {% for company in company_list %}
+    <li>
+        <strong><a href="{% url 'company_detail' company.pk %}">{{ company.name }}</a></strong>
+        {% if user.is_staff %}<a href="{% url 'company_update' company.pk%}">Обновить</a>, <a href="{% url 'company_delete' company.pk%}">Удалить</a> {% endif %}
+    </li>
+    {% empty %}
+    <p>Нет компаний.</p>
+    {% endfor %}
+</ul>
+{% endblock %}

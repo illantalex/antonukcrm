@@ -1,0 +1,24 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1>{{ project.name }}</h1>
+
+<p><strong>Компания:</strong> {{ project.company }}</p>
+<p><strong>Описание:</strong> {{ project.summary }}</p>
+<p><strong>Дата начала:</strong> {{ project.project_start }}</p>
+<p><strong>Название:</strong> {{ project.project_end }}</p>
+<p><strong>Стоимость:</strong> {{ project.project_cost }}</p>
+<div style="margin-left:20px;margin-top:20px">
+    <h4>Комментарии:</h4>
+    <ul>
+        {% for copy in project.message_set.all %}
+        <li><p><h6><a href="{% url 'message_detail' copy.pk %}">{{copy.name}}</a></h6></p></li>
+        <p><strong>Канал обращения: </strong>{{copy.get_channel_display}}</p>
+        <p><strong>Менеджер: </strong>{{copy.manager}}</p>
+        <p><strong>Оценка: </strong>{{copy.get_mark_display}}</p>
+        {% empty %}
+        <p>Нет комментариев.</p>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

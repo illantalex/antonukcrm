@@ -1,0 +1,20 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1>Список проектов</h1>
+<p>Сортировать по названию:<a href="?sort=name">▲</a><a href="?sort=-name">▼</a></p>
+{% if user.is_staff %}
+<a href="{% url 'project_create' %}">Добавить проект</a>
+{% endif %}
+
+<ul>
+    {% for project in project_list %}
+    <li>
+        <strong><a href="{% url 'project_detail' project.pk %}">{{ project.name }}</a></strong>
+        {% if user.is_staff %}<a href="{% url 'project_update' project.pk%}">Обновить</a>, <a href="{% url 'project_delete' project.pk%}">Удалить</a> {% endif %}
+    </li>
+    {% empty %}
+    <p>Нет проектов.</p>
+    {% endfor %}
+</ul>
+{% endblock %}

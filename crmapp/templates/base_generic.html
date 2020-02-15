@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    {% block title %}<title>Customer Relationship Manager</title>{% endblock %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- Добавление дополнительного статического CSS файла -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+
+<body>
+
+<div class="container-fluid">
+    <span class="row">
+        {% block navbar %}
+        <ul class="nav nav-pills">
+            <li class="active">
+                <a href="{% url 'company_list' %}">Компании</a>
+            </li>
+            <li><a href="{% url 'project_list' %}">Проекты</a></li>
+            <li><a href="{% url 'message_list' %}">Комментарии</a></li>
+            {% if user.is_authenticated %}
+            <li><a href="">Пользователь: {{ user.get_username }}</a></li>
+            {% if user.manager %}
+            <li><a href="{% url 'manager_page' user.manager.pk%}">Кабинет менеджера</a></li>
+            {% endif %}
+            <li><a href="{% url 'logout'%}?next={{request.path}}">Logout</a></li>
+            {% else %}
+            <li><a href="{% url 'login'%}?next={{request.path}}">Login</a></li>
+            {% endif %}
+        </ul>
+        {% endblock %}
+    </span>
+    <div id="text">
+        <div class="row">
+            {% block content %}{% endblock %}
+            {% block pagination %}
+            {% if is_paginated %}
+            <div class="pagination">
+              <span class="page-links">
+                  Номер страницы:
+                  {% for page in page_obj.paginator.page_range %}
+                  {% if page_obj.number == page %}
+                  {{ page }}
+                  {% else %}
+                  <a href="{{ request.path }}?page={{ page }}">{{ page }} </a>
+                  {% endif %}
+                  {% endfor %}
+              </span>
+            </div>
+            {% endif %}
+            {% endblock %}
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

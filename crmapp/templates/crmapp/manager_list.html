@@ -1,0 +1,14 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1>Список менеджеров</h1>
+<ul>
+    {% for company in company_list %}
+    <li>
+
+    </li>
+    {% empty %}
+    <p>Нет компаний.</p>
+    {% endfor %}
+</ul>
+{% endblock %}
