@@ -114,7 +114,7 @@ class MessageCreate(CreateView):
 
 class MessageUpdate(UpdateView):
     model = Message
-    fields = ['name', 'project', 'channel', 'description', 'mark', 'keywords']
+    fields = ['name', 'project', 'channel', 'description', 'mark', 'kwords']
     success_url = reverse_lazy('message_list')
 
 

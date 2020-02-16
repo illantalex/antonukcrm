@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'crmapp.apps.CrmappConfig',
     'django_filters',
+    'ckeditor'
 ]
 
 MIDDLEWARE = [

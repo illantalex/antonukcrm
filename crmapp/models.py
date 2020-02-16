@@ -2,7 +2,7 @@ from django.db import models
 # from django.conf import settings
 from django.contrib.auth.models import User
 from django.urls import reverse
-
+from ckeditor.fields import RichTextField
 
 # Create your models here.
 
@@ -10,7 +10,7 @@ from django.urls import reverse
 class Company(models.Model):
     name = models.CharField(verbose_name='Название компании', max_length=100)
     director = models.CharField(verbose_name='ФИО руководителя (контактного лица)', max_length=100)
-    summary = models.TextField(verbose_name='Краткое описание', max_length=1000)
+    summary = RichTextField(verbose_name='Краткое описание')
     date_create = models.DateField(verbose_name='Дата создания', auto_now_add=True, editable=False)
     date_update = models.DateField(verbose_name='Дата обновления', auto_now=True)
     adress = models.CharField(verbose_name='Адрес', max_length=100)
@@ -27,7 +27,7 @@ class Company(models.Model):
 
 class Project(models.Model):
     name = models.CharField(verbose_name='Название проекта', max_length=100)
-    summary = models.TextField(verbose_name='Описание', max_length=1000)
+    summary = RichTextField(verbose_name='Описание')
     project_start = models.DateField(verbose_name='Сроки начала')
     project_end = models.DateField(verbose_name='Срок окончания')
     project_cost = models.IntegerField(verbose_name='Стоимость')
@@ -75,7 +75,7 @@ class Message(models.Model):
     )
     channel = models.CharField(verbose_name='Канал обращения', max_length=1, choices=CHANNELS, blank=True, default='z')
     manager = models.ForeignKey('Manager', on_delete=models.CASCADE, verbose_name='Менеджер')
-    description = models.TextField(max_length=1000, verbose_name='Описание')
+    description = RichTextField(verbose_name='Описание')
     mark = models.CharField(max_length=1, choices=MARK, verbose_name='Оценка')
     kwords = models.ManyToManyField('Keyword', verbose_name='Ключевые слова', blank=True)
 

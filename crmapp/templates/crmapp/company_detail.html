@@ -4,7 +4,7 @@
 <h1>Компания {{ company.name }}</h1>
 
 <p><strong>ФИО руководителя (контактного лица):</strong> {{ company.director }}</p>
-<p><strong>Описание:</strong> {{ company.summary }}</p>
+<p><strong>Описание:</strong> {{ company.summary|safe }}</p>
 <p><strong>Дата создания записи:</strong> {{ company.date_create }}</p>
 <p><strong>Дата изменения записи:</strong> {{ company.date_update }}</p>
 <p><strong>Адрес:</strong> {{ company.adress }}</p>

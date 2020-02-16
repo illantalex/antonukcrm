@@ -15,7 +15,7 @@
 <ul>
     {% for message in filter.qs %}
     <li>
-        <strong><a href="{% url 'message_detail' message.pk %}">{{ message.description }}</a></strong>
+        <strong><a href="{% url 'message_detail' message.pk %}">{{ message.description|safe }}</a></strong>
         {% if user.is_staff %}<a href="{% url 'message_update' message.pk %}">Обновить</a>, <a
             href="{% url 'message_delete' message.pk %}">Удалить</a> {% endif %}
     </li>

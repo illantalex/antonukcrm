@@ -21,7 +21,7 @@
     <ul>
         {% for copy in manager.message_set.all %}
         <li><p><h6><a href="{% url 'message_detail' copy.pk %}">{{copy.name}}</a></h6></p>
-            <p><strong>Описание: </strong>{{copy.description}}</p></li>
+            <p><strong>Описание: </strong>{{copy.description|safe}}</p></li>
         <p><strong>Канал обращения: </strong>{{copy.get_channel_display}}</p>
         <p><strong>Оценка: </strong>{{copy.get_mark_display}}</p></li>
         {% empty %}

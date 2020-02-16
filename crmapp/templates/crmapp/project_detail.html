@@ -4,7 +4,7 @@
 <h1>{{ project.name }}</h1>
 
 <p><strong>Компания:</strong> {{ project.company }}</p>
-<p><strong>Описание:</strong> {{ project.summary }}</p>
+<p><strong>Описание:</strong> {{ project.summary|safe }}</p>
 <p><strong>Дата начала:</strong> {{ project.project_start }}</p>
 <p><strong>Название:</strong> {{ project.project_end }}</p>
 <p><strong>Стоимость:</strong> {{ project.project_cost }}</p>
