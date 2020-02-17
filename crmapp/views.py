@@ -63,7 +63,7 @@ class UserUpdate(UpdateView):
     model = User
     fields = ['first_name', 'last_name', 'email']
     # fields = '__all__'
-    success_url = reverse_lazy('company_list')
+    # success_url = reverse_lazy('manager_page', args=[])
 
     # def get_success_url(self):
     #     return reverse_lazy('manager_page', args=[str(self.pk)])
