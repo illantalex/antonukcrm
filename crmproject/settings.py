@@ -88,11 +88,6 @@ import dj_database_url
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
 
-# MEDIA_URL = '/media/'
-# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-# FILE_UPLOAD_HANDLERS = [
-#
-# ]
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 
@@ -136,8 +131,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 LOGIN_REDIRECT_URL = '/'
 
 AWS_QUERYSTRING_AUTH = False
-AWS_ACCESS_KEY_ID = 'AKIA6LCEWOOXJICXZFQY'
-AWS_SECRET_ACCESS_KEY = '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'
 AWS_STORAGE_BUCKET_NAME = 'illantal-media'
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 AWS_LOCATION = 'static'
