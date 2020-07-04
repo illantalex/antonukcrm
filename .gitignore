@@ -91,3 +91,7 @@ ENV/
 
 # Spyder project settings
 .spyderproject
+
+#VS Code project folder
+.vscode
+.idea
