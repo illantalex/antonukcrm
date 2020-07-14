@@ -9,10 +9,13 @@ from ckeditor.fields import RichTextField
 
 class Company(models.Model):
     name = models.CharField(verbose_name='Название компании', max_length=100)
-    director = models.CharField(verbose_name='ФИО руководителя (контактного лица)', max_length=100)
+    director = models.CharField(
+        verbose_name='ФИО руководителя (контактного лица)', max_length=100)
     summary = RichTextField(verbose_name='Краткое описание')
-    date_create = models.DateField(verbose_name='Дата создания', auto_now_add=True, editable=False)
-    date_update = models.DateField(verbose_name='Дата обновления', auto_now=True)
+    date_create = models.DateField(
+        verbose_name='Дата создания', auto_now_add=True, editable=False)
+    date_update = models.DateField(
+        verbose_name='Дата обновления', auto_now=True)
     adress = models.CharField(verbose_name='Адрес', max_length=100)
     email = models.EmailField()
     phone = models.CharField(verbose_name='Телефон', max_length=13)
@@ -42,7 +45,8 @@ class Project(models.Model):
 
 
 class Manager(models.Model):
-    photo = models.ImageField(verbose_name='Фото', upload_to='media', blank=True)
+    photo = models.ImageField(
+        verbose_name='Фото', upload_to='media', blank=True)
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
@@ -73,11 +77,14 @@ class Message(models.Model):
         ('l', 'Like'),
         ('d', 'Dislike')
     )
-    channel = models.CharField(verbose_name='Канал обращения', max_length=1, choices=CHANNELS, blank=True, default='z')
-    manager = models.ForeignKey('Manager', on_delete=models.CASCADE, verbose_name='Менеджер')
+    channel = models.CharField(verbose_name='Канал обращения',
+                               max_length=1, choices=CHANNELS, blank=True, default='z')
+    manager = models.ForeignKey(
+        'Manager', on_delete=models.CASCADE, verbose_name='Менеджер')
     description = RichTextField(verbose_name='Описание')
     mark = models.CharField(max_length=1, choices=MARK, verbose_name='Оценка')
-    kwords = models.ManyToManyField('Keyword', verbose_name='Ключевые слова', blank=True)
+    kwords = models.ManyToManyField(
+        'Keyword', verbose_name='Ключевые слова', blank=True)
 
     def __str__(self):
         return f"{self.description[:20]}..."

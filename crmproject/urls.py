@@ -26,7 +26,7 @@ urlpatterns = [
 
 # Используйте include() чтобы добавлять URL из каталога приложения
 urlpatterns += [
-     path('crmapp/', include('crmapp.urls')),
+    path('crmapp/', include('crmapp.urls')),
 ]
 
 urlpatterns += [
