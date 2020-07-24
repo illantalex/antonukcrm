@@ -3,8 +3,13 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
 from ckeditor.fields import RichTextField
-
+from datetime import datetime
+from os.path import splitext
 # Create your models here.
+
+
+def get_timestamp_path(instance, filename):
+    return f"{datetime.now().timestamp()}{splitext(filename)[1]}"
 
 
 class Company(models.Model):
@@ -45,8 +50,9 @@ class Project(models.Model):
 
 
 class Manager(models.Model):
+
     photo = models.ImageField(
-        verbose_name='Фото', upload_to='media', blank=True)
+        verbose_name='Фото', upload_to=get_timestamp_path, blank=True)
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
