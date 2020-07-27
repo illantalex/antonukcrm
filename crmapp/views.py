@@ -62,6 +62,7 @@ class ManagerCabinet(generic.DetailView):
 class UserUpdate(UpdateView):
     model = User
     fields = ['first_name', 'last_name', 'email']
+    success_url = reverse_lazy('company_list')
     # fields = '__all__'
     # success_url = reverse_lazy('manager_page', args=[])
 
