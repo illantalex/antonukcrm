@@ -7,7 +7,7 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('crmapp', '0008_auto_20200209_1556'),
+        ('main', '0008_auto_20200209_1556'),
     ]
 
     operations = [
@@ -21,11 +21,11 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='project',
             name='company',
-            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='crmapp.Company'),
+            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='main.Company'),
         ),
         migrations.AddField(
             model_name='message',
             name='kwords',
-            field=models.ManyToManyField(to='crmapp.Keyword', verbose_name='Ключевые слова'),
+            field=models.ManyToManyField(to='main.Keyword', verbose_name='Ключевые слова'),
         ),
     ]

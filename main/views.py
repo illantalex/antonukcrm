@@ -56,7 +56,7 @@ class MessageDetailView(generic.DetailView):
 class ManagerCabinet(generic.DetailView):
     model = Manager
     # permission_required = 'crmapp.manager.can_view_manager'
-    template_name = 'crmapp/manager_page.html'
+    template_name = 'main/manager_page.html'
 
 
 class UserUpdate(UpdateView):

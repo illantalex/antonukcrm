@@ -9,7 +9,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('crmapp', '0006_auto_20200208_1701'),
+        ('main', '0006_auto_20200208_1701'),
     ]
 
     operations = [

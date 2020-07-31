@@ -26,11 +26,11 @@ urlpatterns = [
 
 # Используйте include() чтобы добавлять URL из каталога приложения
 urlpatterns += [
-    path('crmapp/', include('crmapp.urls')),
+    path('main/', include('main.urls')),
 ]
 
 urlpatterns += [
-    path('', RedirectView.as_view(url='/crmapp/', permanent=True)),
+    path('', RedirectView.as_view(url='/main/', permanent=True)),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

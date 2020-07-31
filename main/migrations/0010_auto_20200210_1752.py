@@ -6,7 +6,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('crmapp', '0009_auto_20200210_1708'),
+        ('main', '0009_auto_20200210_1708'),
     ]
 
     operations = [
@@ -17,6 +17,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='message',
             name='kwords',
-            field=models.ManyToManyField(blank=True, to='crmapp.Keyword', verbose_name='Ключевые слова'),
+            field=models.ManyToManyField(blank=True, to='main.Keyword', verbose_name='Ключевые слова'),
         ),
     ]

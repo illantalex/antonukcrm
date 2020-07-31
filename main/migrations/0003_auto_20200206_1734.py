@@ -6,7 +6,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('crmapp', '0002_remove_manager_photo'),
+        ('main', '0002_remove_manager_photo'),
     ]
 
     operations = [

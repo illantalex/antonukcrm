@@ -7,7 +7,7 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('crmapp', '0010_auto_20200210_1752'),
+        ('main', '0010_auto_20200210_1752'),
     ]
 
     operations = [

@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class CrmappConfig(AppConfig):
-    name = 'crmapp'
+class MainConfig(AppConfig):
+    name = 'main'
     verbose_name = 'CRM Система'

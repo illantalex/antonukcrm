@@ -30,10 +30,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'crmapp.apps.CrmappConfig',
+    'main.apps.MainConfig',
     'django_filters',
     'ckeditor',
     'storages',
+    'django_rename_app'
 ]
 
 MIDDLEWARE = [

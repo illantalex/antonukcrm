@@ -45,7 +45,7 @@ class Migration(migrations.Migration):
                 ('project_start', models.DateField(verbose_name='Сроки начала')),
                 ('project_end', models.DateField(verbose_name='Срок окончания')),
                 ('project_cost', models.IntegerField(verbose_name='Стоимость')),
-                ('company', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, to='crmapp.Company')),
+                ('company', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, to='main.Company')),
             ],
         ),
         migrations.CreateModel(
@@ -55,8 +55,8 @@ class Migration(migrations.Migration):
                 ('channel', models.CharField(blank=True, choices=[('z', 'Заявка'), ('p', 'Письмо'), ('s', 'Сайт'), ('v', 'Входящее письмо'), ('i', 'Инициатива компании')], default='z', max_length=1, verbose_name='Канал обращения')),
                 ('description', models.TextField(max_length=1000, verbose_name='Описание')),
                 ('mark', models.CharField(choices=[('l', 'Like'), ('d', 'Dislike')], max_length=1, verbose_name='Оценка')),
-                ('manager', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='crmapp.Manager', verbose_name='Менеджер')),
-                ('project', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='crmapp.Project')),
+                ('manager', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='main.Manager', verbose_name='Менеджер')),
+                ('project', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='main.Project')),
             ],
         ),
     ]
