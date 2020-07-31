@@ -34,7 +34,6 @@ INSTALLED_APPS = [
     'django_filters',
     'ckeditor',
     'storages',
-    'django_rename_app'
 ]
 
 MIDDLEWARE = [

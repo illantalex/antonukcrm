@@ -10,4 +10,3 @@ Pillow
 psycopg2
 psycopg2-binary
 whitenoise
-django-rename-app
