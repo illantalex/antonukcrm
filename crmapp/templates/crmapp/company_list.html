@@ -11,7 +11,8 @@
     {% for company in company_list %}
     <li>
         <strong><a href="{% url 'company_detail' company.pk %}">{{ company.name }}</a></strong>
-        {% if user.is_staff %}<a href="{% url 'company_update' company.pk%}">Обновить</a>, <a href="{% url 'company_delete' company.pk%}">Удалить</a> {% endif %}
+        {% if user.is_staff %}<a href="{% url 'company_update' company.pk%}">Обновить</a>, <a
+            href="{% url 'company_delete' company.pk%}">Удалить</a> {% endif %}
     </li>
     {% empty %}
     <p>Нет компаний.</p>
