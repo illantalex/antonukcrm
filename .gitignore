@@ -92,7 +92,14 @@ env/
 # Spyder project settings
 .spyderproject
 
-#VS Code project folder
+# VS Code project folder
 .vscode
 .idea
+
+# Todo
 Todo
+TODO
+
+#secret keys
+keys.py
+keys.json

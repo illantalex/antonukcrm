@@ -1,5 +1,4 @@
 boto3
-cryptography
 dj-database-url
 Django
 django-ckeditor

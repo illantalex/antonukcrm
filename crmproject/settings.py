@@ -12,7 +12,8 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import dj_database_url
 import os
-from crmproject.keys import *
+import json
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -20,8 +21,29 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 ALLOWED_HOSTS = ['crmproject-antonyuk.herokuapp.com', '127.0.0.1']
-# DEBUG = True
+
+# If this is local debug we open file keys.json with all project keys
+try:
+    with open("crmproject/keys.json", "r") as keys:
+        data = json.load(keys)
+        for key, value in data.items():
+            os.environ[key] = value
+except FileNotFoundError:
+    pass
+
+DEBUG = os.environ['DEBUG'] != 'False'
+SECRET_KEY = os.environ['SECRET_KEY']
+AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
+AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
+EMAIL_HOST_USER = os.environ['EMAIL_HOST_USER']
+EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD']
 # Application definition
+# DEBUG = True
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
 
 INSTALLED_APPS = [
     'django.contrib.admin',
