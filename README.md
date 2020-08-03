@@ -2,7 +2,7 @@
 
 ## This is my pet project of the Client Relationship Manager
 
-The actual website is placed [here](https://crmproject-antonyuk.herokuapp.com/crmapp/)
+The actual website is placed [here](https://illantal-crm.herokuapp.com)
 
 It's still in development so that bugs will be fixed and more features will be added
 
