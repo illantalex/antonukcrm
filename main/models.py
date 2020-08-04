@@ -93,7 +93,7 @@ class Message(models.Model):
         'Keyword', verbose_name='Ключевые слова', blank=True)
 
     def __str__(self):
-        return f"{self.description[:20]}..."
+        return f"{self.name}"
 
     class Meta:
         verbose_name = 'Сообщение'

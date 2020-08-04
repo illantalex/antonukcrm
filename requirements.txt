@@ -3,6 +3,7 @@ dj-database-url
 Django
 django-ckeditor
 django-filter
+django-registration
 django-storages
 gunicorn
 Pillow

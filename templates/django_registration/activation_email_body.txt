@@ -1,0 +1,5 @@
+{% load i18n %}
+{% trans "Hello," %} {{user}}!
+{% trans "You have registered on the site" %} {{site}} {% trans "and now you need to activate your account. To do this, follow the link below. It expires in" %} {{expiration_days}} {% trans "days" %}
+{{ site }}/accounts/activate/{{ activation_key }}/
+{% trans "Thank you!" %}

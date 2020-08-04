@@ -20,7 +20,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
-ALLOWED_HOSTS = ['crmproject-antonyuk.herokuapp.com', '127.0.0.1', 'illantal-crm.herokuapp.com']
+ALLOWED_HOSTS = ['crmproject-antonyuk.herokuapp.com',
+                 '127.0.0.1', 'illantal-crm.herokuapp.com']
 
 # If this is local debug we open file keys.json with all project keys
 try:
@@ -37,13 +38,16 @@ AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
 AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
 EMAIL_HOST_USER = os.environ['EMAIL_HOST_USER']
 EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD']
-# Application definition
+
 # DEBUG = True
+# REGISTRATION_OPEN = False
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
+
+ACCOUNT_ACTIVATION_DAYS = 2
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -56,6 +60,7 @@ INSTALLED_APPS = [
     'django_filters',
     'ckeditor',
     'storages',
+    'django_registration',
 ]
 
 MIDDLEWARE = [
@@ -67,6 +72,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
 ]
 
 ROOT_URLCONF = 'crmproject.urls'

@@ -1,0 +1,20 @@
+{% extends "base_site.html" %}
+{% load i18n %}
+
+{% block breadcrumbs %}
+<div class="breadcrumbs">
+    <a href="{% url 'company_list' %}">{% trans 'Home' %}</a>
+    &rsaquo; {% trans 'Registration disallowed' %}
+</div>
+{% endblock %}
+
+{% block title %}{{ title }}{% endblock %}
+{% block content_title %}<h1>{{ title }}</h1>{% endblock %}
+
+{% block content %}
+
+<p>{% trans "This site doesn't allow to register more users." %}</p>
+
+<p><a href="{% url 'company_list' %}">{% trans 'Home' %}</a></p>
+
+{% endblock %}

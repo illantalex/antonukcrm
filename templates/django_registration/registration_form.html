@@ -1,0 +1,83 @@
+{% extends "base_site.html" %}
+{% load i18n static %}
+
+{% block extrastyle %}{{ block.super }}
+<link rel="stylesheet" type="text/css" href="{% static "admin/css/login.css" %}">
+{{ form.media }}
+{% endblock %}
+
+{% block bodyclass %}{{ block.super }} registration{% endblock %}
+
+{% block usertools %}{% endblock %}
+
+{% block nav-global %}{% endblock %}
+
+{% block content_title %}{% endblock %}
+
+{% block breadcrumbs %}{% endblock %}
+
+{% block content %}
+{% if form.errors and not form.non_field_errors %}
+<p class="errornote">
+    {% if form.errors.items|length == 1 %}{% trans "Please correct the error below." %}{% else %}{% trans "Please correct the errors below." %}{% endif %}
+</p>
+{% endif %}
+
+{% if form.non_field_errors %}
+{% for error in form.non_field_errors %}
+<p class="errornote">
+    {{ error }}
+</p>
+{% endfor %}
+{% endif %}
+
+<div id="content-main">
+
+    {% if user.is_authenticated %}
+    <p class="errornote">
+        {% blocktrans trimmed %}
+        You are authenticated as {{ username }}, but are not authorized to
+        access this page. Would you like to login to a different account?
+        {% endblocktrans %}
+    </p>
+    {% endif %}
+
+    <form action="{{ app_path }}" method="post" id="registration-form">{% csrf_token %}
+        <table>
+            <tr>
+                <div class="form-row">
+                    <td>{{ form.username.errors }}</td>
+                    <td>{{ form.username.label_tag }}</td>
+                    <td>{{ form.username }}</td>
+                </div>
+            </tr>
+            <tr>
+                <div class="form-row">
+                    <td>{{ form.email.errors }}</td>
+                    <td>{{ form.email.label_tag }}</td>
+                    <td>{{ form.email }}</td>
+                </div>
+            </tr>
+            <tr>
+                <div class="form-row">
+                    <td>{{ form.password1.errors }}</td>
+                    <td>{{ form.password1.label_tag }}</td>
+                    <td>{{ form.password1 }}</td>
+                </div>
+            </tr>
+            <tr>
+                <div class="form-row">
+                    <td>{{ form.password2.errors }}</td>
+                    <td>{{ form.password2.label_tag }}</td>
+                    <td>{{ form.password2 }}</td>
+                    <input type="hidden" name="next" value="{{ next }}">
+                </div>
+            </tr>
+        </table>
+        <div class="submit-row">
+            <label>&nbsp;</label><input type="submit" value="{% trans 'Sign up' %}">
+        </div>
+    </form>
+
+</div>
+{% endblock %}
