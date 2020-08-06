@@ -103,3 +103,4 @@ TODO
 #secret keys
 keys.py
 keys.json
+my.cnf
