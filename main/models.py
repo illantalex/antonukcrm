@@ -24,6 +24,7 @@ class Company(models.Model):
     adress = models.CharField(verbose_name='Адрес', max_length=100)
     email = models.EmailField()
     phone = models.CharField(verbose_name='Телефон', max_length=13)
+    image = models.ImageField(verbose_name='Галерея', upload_to=get_timestamp_path, blank=True)
 
     def __str__(self):
         return self.name
@@ -50,9 +51,7 @@ class Project(models.Model):
 
 
 class Manager(models.Model):
-
-    photo = models.ImageField(
-        verbose_name='Фото', upload_to=get_timestamp_path, blank=True)
+    photo = models.ImageField(verbose_name='Фото', upload_to=get_timestamp_path, blank=True)
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
